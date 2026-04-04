@@ -1,6 +1,14 @@
+from pathlib import Path
+
 import firebase_admin
 from firebase_admin import credentials, firestore
 
-cred=credentials.Certificate("firebasekey.json")
-firebase_admin.initialize_app(cred)
-db=firestore.client()
+
+BASE_DIR = Path(__file__).resolve().parent
+FIREBASE_KEY_PATH = BASE_DIR / "firebasekey.json"
+
+cred = credentials.Certificate(FIREBASE_KEY_PATH)
+if not firebase_admin._apps:
+    firebase_admin.initialize_app(cred)
+
+db = firestore.client()

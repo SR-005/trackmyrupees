@@ -1,7 +1,12 @@
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 
-from regexparser import parser
-from fuzzymatcher import fuzzymatch
-from classifier import rulebasedclassifier
+from backend.processing.regexparser import parser
+from backend.processing.fuzzymatcher import fuzzymatch
+from backend.processing.classifier import rulebasedclassifier
+from backend.database import db
+
 
 def processmessage(message: str):
     data=parser(message)
@@ -15,8 +20,10 @@ def processmessage(message: str):
     data["category"]=category
     print("Extracted Data: ",data)
 
+    db.collection("transactions").add(data)
 
-if __name__=="__main__":
+
+def main():
     testmessages=[
         "Rs. 500 debited from your account at Amazon",
         "Rs 1200 credited to your account",
@@ -29,3 +36,7 @@ if __name__=="__main__":
     for messages in testmessages:
         print(f"\nTesting: {messages}")
         processmessage(messages)
+
+
+if __name__=="__main__":
+    main()

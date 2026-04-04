@@ -10,5 +10,6 @@ def fuzzymatch(merchant: str):
         return matches[0]
     else:
         return None
-    
-fuzzymatch("zmt")
+
+if __name__ == "__main__":
+    fuzzymatch("zmt")

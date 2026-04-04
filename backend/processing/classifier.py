@@ -19,4 +19,5 @@ def rulebasedclassifier(merchant: str):
 def expanddataset(merchant: str,catergory: str):
     return 0
 
-rulebasedclassifier("amazon")
+if __name__ == "__main__":
+    rulebasedclassifier("amazon")
