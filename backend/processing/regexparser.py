@@ -33,7 +33,7 @@ def parser(message: str):
         "timestamp":datetime.now()
     }
 
-testmessages=[
+'''testmessages=[
     "Rs. 500 debited from your account at Amazon",
     "Rs 1200 credited to your account",
     "INR 250 spent at Swiggy Instamart",
@@ -44,4 +44,4 @@ testmessages=[
 
 for messages in testmessages:
     print(f"\nTesting: {messages}")
-    parser(messages)
+    parser(messages)'''

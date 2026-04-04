@@ -2,18 +2,21 @@
 dataset={
     "zomato":"Food",
     "swiggy":"Food",
-    "uber":"Food",
-    "ola":"Food",
-    "amazon":"Food",
-    "flipkart":"Food"
+    "uber":"Transport",
+    "ola":"Transport",
+    "amazon":"Shopping",
+    "flipkart":"Shopping"
 }
 
 def rulebasedclassifier(merchant: str):
     merchant=merchant.lower()
     for key in dataset:
         if key in merchant:
+            print(f"Classifier: {dataset[key]}")
             return dataset[key]
     return None
 
 def expanddataset(merchant: str,catergory: str):
     return 0
+
+rulebasedclassifier("amazon")
