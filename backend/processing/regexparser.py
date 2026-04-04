@@ -4,7 +4,9 @@ from datetime import datetime
 def parser(message: str):
     #finding the amount and merchant from passed messages. ' str1\.str2? ' represents that parser will look for str1 and str1+str2 combined. ' int+ ' searches for numbers in repeat 
     amount=re.search(r'(?:Rs|INR)\.?\s?(\d+)',message)
-    merchant=re.search(r'(?:at|from)\s+([A-Za-z0-9\s\-\*]+)',message)  
+    merchant=re.search(r'at\s+([A-Za-z0-9\s\-\*]+)',message)
+    if not merchant:
+          merchant=re.search(r'from\s+([A-Za-z0-9\s\-\*]+)',message)    #this extra bit is done inorder to capture merchant more accuratly
 
     #cleaning parsed data and deciding transaction type
     amount=float(amount.group(1)) if amount else 0
